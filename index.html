@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +10,12 @@
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 50px;
+            background-color: beige;
         }
 
         h1 {
             color: #333;
+            text-decoration: underline;
         }
 
         button {
@@ -20,20 +23,71 @@
             margin: 10px;
             font-size: 16px;
             cursor: pointer;
+            display: flex;
+            background-color: lightgray;
+        }
+
+        img {
+            height: 25px;
+            display: flex;
+        }
+
+        #yt {
+            display: flex;
+            margin-top: 10px;
+
+        }
+
+        .img {
+            height: 35px;
+            padding-bottom: 3px;
+        }
+
+        .buto {
+            display: inline-block;
+        }
+
+        #fb {
+            margin-top: 10px;
+        }
+
+        #x {
+            margin-top: 10px;
+            margin-left: 5px;
+        }
+
+        #lkd {
+            margin-top: 10px;
+            margin-left: 5px;
+        }
+
+        button:hover {
+            scale: 1.1;
+            background-color: whitesmoke;
         }
 
         /* TODO: Add styles for hover effect */
     </style>
 </head>
+
 <body>
 
     <h1>Click a Button to Go Somewhere!</h1>
 
     <!-- Incomplete: The href for these buttons is missing -->
-    <button onclick="window.location.href='https://www.youtube.com/';">Go to YouTube</button>
-    <button onclick="window.location.href='https://www.facebook.com/';">Go to Facebook</button>
-    <button onclick="window.location.href='https://www.x.com/';">Go to Twitter</button>
-    <button onclick="window.location.href='https://www.linkedin.com/';">Go to linkedin</button>
+    <div class="buto"><a href="https://www.youtube.com/"><button><img src="YT Logo.png" alt="" class="img">
+                <div id="yt"> Go to YouTube </div>
+            </button></a></div>
+    <div class="buto"><a href="https://www.facebook.com/"><button><img src="Facebook.png" alt="" class="img">
+                <div id="fb">Go to Facebook</div>
+            </button></a></div>
+    <div class="buto"><a href="https://x.com/"><button><img src="Twitter.png" alt="" class="img">
+                <div id="x">Go to Twitter</div>
+            </button></a></div>
+    <div class="buto"><a href="https://www.linkedin.com/"><button><img src="LinkedIn.png" alt="" class="img">
+                <div id="lkd"> Go to linkedin</div>
+            </button></a></div>
 
 </body>
+
 </html>
