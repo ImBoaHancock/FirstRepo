@@ -27,6 +27,12 @@
             margin: 5px 0;
             padding: 10px;
             border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        button {
+            margin-left: 10px;
         }
     </style>
 </head>
@@ -43,23 +49,55 @@
         const addNoteBtn = document.getElementById('addNoteBtn');
         const noteList = document.getElementById('noteList');
 
-        // Load notes from local storage (to be implemented)
+        // Load notes from local storage
+        function loadNotes() {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            notes.forEach(note => addNoteToList(note));
+        }
 
         function addNoteToList(noteText) {
-            // Functionality to add notes to the list (to be implemented)
+            const li = document.createElement('li');
+            li.textContent = noteText;
+
+            const editBtn = document.createElement('button');
+            editBtn.textContent = 'Edit';
+            editBtn.onclick = () => {
+                const newNoteText = prompt("Edit your note:", noteText);
+                if (newNoteText) {
+                    li.firstChild.textContent = newNoteText;
+                    saveNotes();
+                }
+            };
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.onclick = () => {
+                noteList.removeChild(li);
+                saveNotes();
+            };
+
+            li.appendChild(editBtn);
+            li.appendChild(deleteBtn);
+            noteList.appendChild(li);
         }
 
         function saveNotes() {
-            // Functionality to save notes to local storage (to be implemented)
+            const notes = Array.from(noteList.children).map(li => li.firstChild.textContent);
+            localStorage.setItem('notes', JSON.stringify(notes));
         }
 
         addNoteBtn.addEventListener('click', () => {
-            // Functionality to handle adding notes (to be implemented)
+            const noteText = noteInput.value;
+            if (noteText) {
+                addNoteToList(noteText);
+                noteInput.value = '';
+                saveNotes();
+            }
         });
 
-        // Load notes on page load (to be implemented)
+        // Load notes on page load
+        loadNotes();
     </script>
 
 </body>
 </html>
-
